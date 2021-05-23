@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="login">
+        <div class="login-triangle"></div>
+    
+        <h2 class="login-header">Log in</h2>
+    
+        <form>
+            <p>
+                <input type="email" name="email" placeholder="Correo Electrónico" [(ngModel)]="admin.mail" required>
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="Contraseña" [(ngModel)]="admin.password" required>
+            </p>
+            <p>
+                <input type="submit" value="Ingresar" (click)="onLogin()">
+            </p>
+        </form>
+    </div>
+</div>

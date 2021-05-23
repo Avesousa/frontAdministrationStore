@@ -1,0 +1,32 @@
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1>Lista de producto</h1>
+    </div>
+  </div>
+</div> -->
+
+<div class="container-fluid d-flex flex-column">
+  <header
+    class="p-3 d-flex flex-row justify-content-between align-items-center"
+  >
+    <h1 class="flex-column">Productos</h1>
+  </header>
+
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>Productos</a>
+      <ng-template ngbNavContent>
+        <producto-list></producto-list>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>Crear</a>
+      <ng-template ngbNavContent>
+        <producto-create></producto-create>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

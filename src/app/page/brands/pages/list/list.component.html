@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Marcas Asociadas</h2>
+
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let brand of brands; index as i" (change)="updateBrand(brand)">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+              <img [src]="urlImage + brand.ext + '/' + brand.imagen" *ngIf="brand.imagen" class="mr-2"
+                width="100" />
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+              <div class="fileUpload btn btn-primary">
+                <span>Editar Logo</span>
+                <input type="file" name="imagen" class="upload" placeholder="Cambiar imagen"
+                  (change)="setFiles($event,brand)" />
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="brand.description">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>{{ title }}</h2>
+
+  <!-- (ngSubmit)="enviar(productoForm)" -->
+  <form #productForm="ngForm" (ngSubmit)="enviar(productForm)">
+    <div class="form-group">
+      <label for="descripcion">Descripcion</label>
+      <input type="text" name="descripcion" class="form-control" #descripcion="ngModel"
+        [(ngModel)]="product.description" required />
+      <span *ngIf="descripcion.touched && !descripcion.valid" class="alert alert-danger">
+        La descripción es obligatoria
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Nombre de producto</label>
+      <input type="text" name="nameproduct" class="form-control" #name="ngModel" [(ngModel)]="product.name"
+        required />
+        <span *ngIf="name.touched && !name.valid" class="alert alert-danger">
+          El nombre es obligatorio
+        </span>
+    </div>
+    <div class="form-group">
+      <label for="precio">Precio</label>
+      <input type="text" name="precio" class="form-control" #precio="ngModel" [(ngModel)]="product.price" required />
+      <span *ngIf="precio.touched && !precio.valid" class="alert alert-danger">
+        El precio es obligatorio
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="categoria">Categoria</label>
+      <select name="categoria" class="form-control" [(ngModel)]="product.category">
+        <option *ngFor="let category of categories" [ngValue]="category">{{category.nombre}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Valoración de producto</label>
+      <select name="rating" class="form-control" [(ngModel)]="product.rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="d-flex justify-content-between">
+      
+      <label for="quantity">Cantidad de productos en stock</label>
+      <button class="btn btn-dark" (click)="addOrSubtract('subtract')" [disabled]="product.quantity == 0">-</button>
+      <span class="ml-3 mr-3">{{product.quantity}}</span>
+      <button class="btn btn-dark" (click)="addOrSubtract('add')">+</button>
+    
+    </div>
+    
+    <div class="form-group">
+      <label for="imagen">Imagen del producto</label>
+      <input type="file" name="imagen" class="form-control s-border" placeholder="Subir imagen del producto"
+        (change)="setFiles($event)" />
+    </div>
+    <div>
+      <input type="submit" value="Enviar" class="btn btn-info mt-2" />
+    </div>
+  </form>
+</div>
